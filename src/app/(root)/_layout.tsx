@@ -1,6 +1,6 @@
 import { Redirect, Slot } from 'expo-router';
 import { ActivityIndicator, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AppLayout() {
   const loading = false;
@@ -18,5 +18,11 @@ export default function AppLayout() {
     return <Redirect href="/sign-in" />;
   }
 
-  return <Slot />;
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView className="h-full bg-white">
+        <Slot />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
 }

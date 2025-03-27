@@ -13,19 +13,23 @@ const TabIcon = ({
   icon: any;
   title: string;
 }) => (
-  <View className="flex-1 mt-3 flex flex-col items-center">
-    <Image
-      source={icon}
-      className="w-6 h-6"
-      resizeMode="contain"
-      tintColor={focused ? '#0061FF' : '#666876'}
-    />
+  <View className={`flex flex-col items-center flex-1`}>
+    <View
+      className={`h-8 w-8 flex items-center justify-center ${
+        focused ? 'bg-[#8E97FD] rounded-lg' : ''
+      }`}
+    >
+      <Image
+        source={icon}
+        className={`w-6 h-6`}
+        resizeMode="contain"
+        tintColor={focused ? 'white' : 'gray'}
+      />
+    </View>
     <Text
       className={`${
-        focused
-          ? 'text-primary-300 font-rubik-medium'
-          : 'text-black-200 font-rubik'
-      } text-xs w-full text-center mt-1`}
+        focused ? 'text-[#8E97FD]' : 'text-gray-400'
+      } text-[10px] text-nowrap w-full`}
     >
       {title}
     </Text>
@@ -37,17 +41,19 @@ export default function TabsLayout({}: Props) {
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: 'white',
           position: 'absolute',
-          borderTopColor: '#0061FF1A',
+          borderTopColor: '#E5E7EB',
           borderTopWidth: 1,
-          minHeight: 70,
+          height: 65,
+          paddingTop: 10,
         },
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           headerShown: false,
